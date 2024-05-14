@@ -13,7 +13,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todo = Todo::where('users_id', Auth()->user()->id)->get();
+        $todo = Todo::where('user_id', Auth()->user()->id)->get();
         return view('pages.index', compact('todo'));
     }
 
@@ -31,7 +31,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'Name' => 'required'
+            'name' => 'required'
         ]);
 
         Todo::create([
@@ -47,7 +47,7 @@ class TodoController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
+    {  
         //
     }
 
@@ -72,6 +72,12 @@ class TodoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //get data by id
+        $todo = Todo::find($id);
+
+        //delete data by id
+        $todo->delete();
+
+        return redirect()->route('todos.index')->with('success', 'Category Deleted Successfully');
     }
 }

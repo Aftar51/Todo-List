@@ -6,12 +6,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ route('todos.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="col-md-12">
                         <label for="ProductName" class="form-label">Todo list</label>
                         <input type="text" class="form-control" id="ProductName" name="name">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="ProductName" class="form-label">deadline</label>
+                        <input type="date" class="form-control" id="ProductName" name="deadline">
                     </div>
             </div>
             <div class="modal-footer">

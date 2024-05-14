@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(User::class)->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(User::class)->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('status')->default('on going');
             $table->string('deadline');

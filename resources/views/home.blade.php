@@ -17,7 +17,7 @@
                     {{ __('You are logged in!') }}
                 </div>
 
-                <a href="{{ route('todo.index') }}" class="btn btn-primary">
+                <a href="{{ route('todos.index') }}" class="btn btn-primary">
                     <i class="bi bi-person"></i>
                 </a>
             </div>

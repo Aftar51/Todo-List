@@ -24,7 +24,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @forelse ($todo as $row)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $row->name }}</td>
+                            <td><span class="badge rounded-pill bg-primary">{{ $row->deadline }}</span></td>
+                            <td>
+                                <form action="{{ route('todos.destroy', $row->id) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-center">Data Is Empty</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
